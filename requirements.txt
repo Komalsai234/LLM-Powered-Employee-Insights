@@ -1,0 +1,7 @@
+streamlit
+fastapi
+uvicorn
+psycopg2
+groq
+python-dotenv
+pymysql
