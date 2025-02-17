@@ -28,7 +28,7 @@ def query(user_input: str = Query(..., description="User's natural language quer
 
     # Step 3: Execute SQL Query
     db_results = execute_query(sql_query)
-    if not db_results:
+    if not db_results or len(db_results) == 0:  # Explicit check for no results
         return {"error": "No relevant data found."}
 
     # Step 4: Generate Summary
