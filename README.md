@@ -35,4 +35,4 @@ employee-info-retrieval/
 
 ## 🖼️ Chatbot UI
 
-![Chatbot Streamlit](images/Chabot_Streamlit.png)
+![Chatbot](images/Chatbot_Streamlit.png)
