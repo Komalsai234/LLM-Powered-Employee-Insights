@@ -1,4 +1,4 @@
-# LLM-Powered-Employee-Insights-and-Performance-Analysis
+# LLM-Powered-Employee-Insights
 ## 📌 Overview
 
 The Employee Information Retrieval system is an AI-powered application designed to efficiently fetch and display employee details based on user queries.
