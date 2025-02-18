@@ -32,20 +32,19 @@ def validate_user_query(user_input):
     
     return response.choices[0].message.content.strip()
 
-
 def generate_sql_query(user_input):
-    """Uses Groq LLM to generate an optimized SQL query from user input."""
+    """Uses Groq LLM to generate an optimized SQLite query from user input."""
     
     prompt = f"""
-    You are an expert SQL assistant. Convert the following user request into a **valid MySQL query**.
+    You are an expert SQL assistant. Convert the following user request into a **valid SQLite query**.
     
     - The database contains:
-      1. employee_details (employee_id, first_name, last_name, email, phone)
-      2. employee_work (work_id, employee_id, role, department, office_location, projects, number_of_projects_completed, rating, performance_summary)
+      1. employee_details (employee_id INTEGER PRIMARY KEY, first_name TEXT, last_name TEXT, email TEXT, phone TEXT)
+      2. employee_work (work_id INTEGER PRIMARY KEY, employee_id INTEGER, role TEXT, department TEXT, office_location TEXT, projects TEXT, performance_summary TEXT)
     
     - Strictly follow these rules:
       1. **Only return JSON output. No extra text.**
-      2. **Use proper SQL syntax for MySQL.**
+      2. **Use proper SQL syntax for SQLite.**
       3. **Ensure the query is efficient.**
       4. **Do not include NULL values in the response.**
       5. **If an employee name is provided, match `first_name` and `last_name`.**
@@ -55,7 +54,7 @@ def generate_sql_query(user_input):
     
     **Expected output format (JSON only):**
     {{
-      "sql_query": "SELECT ... FROM employee_details JOIN employee_work ..."
+      "sql_query": "SELECT ... FROM employee_details JOIN employee_work ... LIMIT 1"
     }}
     """
 
@@ -65,8 +64,6 @@ def generate_sql_query(user_input):
     )
 
     raw_response = response.choices[0].message.content.strip()
-    print("🔍 RAW LLM RESPONSE:", raw_response) 
-
     cleaned_response = re.sub(r"```json|```", "", raw_response).strip()
 
     try:
@@ -77,7 +74,8 @@ def generate_sql_query(user_input):
             return None  
     except json.JSONDecodeError as e:
         print(f"JSON Parsing Error: {e}")
-        return None  
+        return None
+
 
 
 

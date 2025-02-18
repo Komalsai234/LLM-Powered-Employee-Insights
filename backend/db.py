@@ -1,14 +1,7 @@
-import pymysql
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
+import sqlite3
 
 def get_db_connection():
-    return pymysql.connect(
-        host=os.getenv("DB_HOST"),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        database=os.getenv("DB_NAME"),
-        port=int(os.getenv("DB_PORT")) 
-    )
+    """Establish SQLite database connection."""
+    conn = sqlite3.connect("employee_data.db")  # SQLite database file
+    conn.row_factory = sqlite3.Row  # Allows dictionary-like access to row data
+    return conn

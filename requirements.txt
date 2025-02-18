@@ -6,3 +6,5 @@ groq
 python-dotenv
 pymysql
 sqlalchemy
+db-sqlite3
+faker
