@@ -5,7 +5,7 @@ import re
 
 from config import GROQ_API_KEY, GROQ_MODEL
 
-client = Groq(api_key=GROQ_API_KEY)
+client = Groq(api_key="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")
 
 def validate_user_query(user_input):
     """LLM determines if requested data exists before querying the database."""
