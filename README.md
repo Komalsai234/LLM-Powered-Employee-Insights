@@ -32,6 +32,10 @@ employee-info-retrieval/
 
 ```
 
+## 🖼️ Project WorkFlow
+
+![Chatbot](images/workflow.png)
+
 
 ## 🖼️ Chatbot UI
 
